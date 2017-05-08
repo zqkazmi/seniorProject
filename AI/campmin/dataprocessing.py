@@ -3,7 +3,8 @@
 ## MLP
 #
 "This script first cleans and then feature-engineers the data."
-
+"In this file we take the data file and make sure all values acceptable - meaning they must be numeric and if it is numeric, it is added to a new file"
+"Otherwise the row is not added." 
 
 
 import collections
@@ -11,7 +12,7 @@ import csv
 
 
 
-
+"Given a value, this method checks if value is numeric or not."
 def is_numeric(value):
     """Check whether a value is numeric."""
     try:
@@ -20,7 +21,7 @@ def is_numeric(value):
     except ValueError:
         # An exception will be thrown if the value is non-numeric.
         return False
-
+"Check if value is numeric, if it is keep and add to new file other don't add to new file." 
 def clean_data(rows):
     """Clean the data by keeping rows that are numeric."""
     # Cleaned rows.
@@ -36,6 +37,7 @@ def clean_data(rows):
 
 
 
+"Write to CSV file method given a file name and a row." 
 
 def write_csv(filename, rows):
     """Write rows of data to a CSV file."""
@@ -44,7 +46,7 @@ def write_csv(filename, rows):
 
         writer.writerows(rows)
 
-
+"Read in Raw Ddata file, run the cleaning fucntion and and write data to new file called datacleaned." 
 def main():
         in_filename = 'rawdata.csv'.format()
 
