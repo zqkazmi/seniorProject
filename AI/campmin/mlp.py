@@ -6,13 +6,14 @@ import numpy
 import sklearn.decomposition
 import sklearn.neural_network
 
-
+" Read in data from datacleaned file."
 def read_data():
     """Read all of the data from disk."""
     # Read each data file,
     d1 = numpy.loadtxt('datacleaned.csv', delimiter=',')
     return d1
 
+"Run MLP with activation function logictis, learning rate to be adaptive and hidden layer size of 10, no early stopping and predict for 25"
 def main():
     # Change these
     activation = 'logistic'
@@ -27,7 +28,7 @@ def main():
     # Normalize the data
     normalized = sklearn.preprocessing.normalize(data)
 
-    # Run PCA and transform the data
+    # Run PCA and transform the data - running Full and MLE will choose how many features to keep on their own. 
     pca = sklearn.decomposition.PCA(svd_solver='full',
             n_components='mle')
     pca.fit(normalized)
